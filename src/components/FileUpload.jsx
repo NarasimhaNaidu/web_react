@@ -1,13 +1,13 @@
 import React from "react";
-// import { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 
 export const Upload = () => {
-  // const [state, setState] = useState(null);
-  const state = {
-    file: null,
-  };
+  const [state, setState] = useState(null);
+  // const state = {
+  //   file: null,
+  // };
   const handleFile = (e) => {
     let file = e.target.files[0];
     var fname = e.target.files[0].name;
@@ -17,19 +17,20 @@ export const Upload = () => {
       fname.includes(".png") ||
       fname.includes(".svg");
     res ? alert("IMAGE") : alert("not an image");
-    this.setState({ file: file });
+    setState(file);
   };
+  
   const UploadFile = (e) => {
     alert("uploaded");
-    // let file = this.state.file;
-    // let formdata = new FormData();
-    // formdata.append("image", file);
-    // formdata.append("name", "Nayudu");
 
-    // axios({ url: "/file", method: "POST", data: formdata }).then(
-    //   (res) => {},
-    //   (err) => {}
-    // );
+    let formdata = new FormData();
+    formdata.append("image", state);
+    formdata.append("name", "Nayudu");
+
+    axios({ url: "/file", method: "POST", data: formdata }).then(
+      (res) => {},
+      (err) => {}
+    );
   };
 
   return (
@@ -47,11 +48,10 @@ export const Upload = () => {
           Choose File
           <input type="file" hidden onChange={(e) => handleFile(e)} />
         </Button>
-        {/* &nbsp;&nbsp;&nbsp;
-        <Button variant="contained" >
+        &nbsp;&nbsp;&nbsp;
+        <Button variant="contained" onClick={(e) => UploadFile(e)}>
           Upload
-          <button type="button" hidden onChange={(e) => UploadFile(e)} />
-        </Button> */}
+        </Button>
       </div>
     </>
   );
