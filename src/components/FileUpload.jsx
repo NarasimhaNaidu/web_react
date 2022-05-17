@@ -19,6 +19,7 @@ export const Upload = () => {
     res ? alert("IMAGE") : alert("not an image");
     setState(file);
   };
+  
   const UploadFile = (e) => {
     alert("uploaded");
 
