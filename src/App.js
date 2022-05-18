@@ -4,10 +4,12 @@ import { SignUp, FormData, Copyright } from "./components/sample";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Header } from "./components/Header";
 import { NewForm } from "./components/NewForm";
-import {Up} from "./components/test";
+import {TestUpload} from "./components/test";
 import { CardN } from "./components/Card";
 import { BodyData } from "./components/Body";
 import { Upload } from "./components/FileUpload";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <div>
@@ -22,6 +24,8 @@ function App() {
           <Route path="/newform" element={<NewForm />} />
           <Route path="/upload" element={<Upload />} />
           {/* <Route path="/up" element={<Up />} /> */}
+          <Route path="/tupload" element={<TestUpload />} />
+
 
           <Route
             path="/card"

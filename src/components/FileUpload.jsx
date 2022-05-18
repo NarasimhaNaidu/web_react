@@ -10,6 +10,7 @@ export const Upload = () => {
   // };
   const handleFile = (e) => {
     let file = e.target.files[0];
+    console.log(e.target.files[0])
     var fname = e.target.files[0].name;
     const res =
       fname.includes(".jpg") ||
@@ -26,8 +27,10 @@ export const Upload = () => {
     let formdata = new FormData();
     formdata.append("image", state);
     formdata.append("name", "Nayudu");
+    // formData.append('dpic',dpic.raw);
 
-    axios({ url: "/file", method: "POST", data: formdata }).then(
+
+    axios({ url: "/test", method: "POST", data: formdata }).then(
       (res) => {},
       (err) => {}
     );
@@ -46,7 +49,7 @@ export const Upload = () => {
         Select File&nbsp;&nbsp;&nbsp;
         <Button variant="contained" component="label">
           Choose File
-          <input type="file" hidden onChange={(e) => handleFile(e)} />
+          <input type="file"  onChange={(e) => handleFile(e)} />
         </Button>
         &nbsp;&nbsp;&nbsp;
         <Button variant="contained" onClick={(e) => UploadFile(e)}>

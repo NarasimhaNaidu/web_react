@@ -4,7 +4,6 @@ import Paper from "@mui/material/Paper";
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
-
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -22,9 +21,12 @@ export function BodyData() {
       <Link to="/newform">New Form</Link>&nbsp;&nbsp;&nbsp;
       <Link to="/card">Cards</Link>&nbsp;&nbsp;&nbsp;
       <Link to="/upload">File Upload</Link>&nbsp;&nbsp;&nbsp;
+      <br />
+      <br />
+      <br />
+      <Link to="/tupload"> Upload</Link>&nbsp;&nbsp;&nbsp;
       {/* <Link to="/up">Up Up</Link>&nbsp;&nbsp;&nbsp; */}
       <p>
-
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt
         voluptatem debitis officia laudantium dolorum. Obcaecati, optio placeat
         blanditiis sed, nam cupiditate est excepturi cum reprehenderit,
