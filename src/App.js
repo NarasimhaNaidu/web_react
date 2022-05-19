@@ -4,11 +4,11 @@ import { SignUp, FormData, Copyright } from "./components/sample";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Header } from "./components/Header";
 import { NewForm } from "./components/NewForm";
-import {TestUpload} from "./components/test";
+import { TestUpload } from "./components/test";
 import { CardN } from "./components/Card";
 import { BodyData } from "./components/Body";
 import { Upload } from "./components/FileUpload";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <Router>
         {/* Nav bar start */}
         <Header />
+
         {/* Nav bar end */}
         <Routes>
           <Route path="/" element={<BodyData />} />
@@ -25,7 +26,6 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           {/* <Route path="/up" element={<Up />} /> */}
           <Route path="/tupload" element={<TestUpload />} />
-
 
           <Route
             path="/card"
@@ -76,10 +76,8 @@ function App() {
             element={<CardN name="STAR" mobile="1122334455" />}
           />
         </Routes>
-        {/* Basic Grid for home page- start*/}
-        {/* Basic Grid for home page- end*/}
-        {/* footer start  */}
 
+        {/* footer start  */}
         <Copyright sx={{ mt: 31 }} />
         {/* footer end  */}
       </Router>

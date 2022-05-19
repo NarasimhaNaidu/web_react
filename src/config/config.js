@@ -1,1 +1,0 @@
-export const serverApi ="http://192.168.29.208:5000";

@@ -49,7 +49,7 @@ export const Upload = () => {
         Select File&nbsp;&nbsp;&nbsp;
         <Button variant="contained" component="label">
           Choose File
-          <input type="file"  onChange={(e) => handleFile(e)} />
+          <input type="file" hidden onChange={(e) => handleFile(e)} />
         </Button>
         &nbsp;&nbsp;&nbsp;
         <Button variant="contained" onClick={(e) => UploadFile(e)}>

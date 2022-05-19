@@ -10,7 +10,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { serverApi } from "../config/config";
 const axios = require("axios");
 
 export const Copyright = (props) => {
@@ -43,7 +42,7 @@ export const NewForm = () => {
   const [err, setErr] = useState(0);
 
   const getdata = async () => {
-    await axios.post(`${serverApi}/register`).then(function (response) {
+    await axios.post("/register").then(function (response) {
       if (response.data.status === true) {
         setName(response.data.usedata.name);
         setMobile(response.data.usedata.mobile);
@@ -82,7 +81,7 @@ export const NewForm = () => {
       formdata.append("email", email);
       formdata.append("password", password);
 
-      axios.post(`${serverApi}/register`, formdata).then(function (response) {
+      axios.post("/register", formdata).then(function (response) {
         if (response.data.status === true) {
           alert("axios call");
         } else {
