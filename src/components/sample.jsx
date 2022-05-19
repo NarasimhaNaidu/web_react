@@ -44,6 +44,7 @@ export const SignUp = () => {
   const [cpassword, setcPassword] = useState("");
   const [mobile, setMobile] = useState("");
   const [err, setErr] = useState(0);
+
   useEffect(() => {
     getdata();
   }, []);
