@@ -10,6 +10,7 @@ export const Upload = () => {
   // };
   const handleFile = (e) => {
     let file = e.target.files[0];
+    console.log(e.target.files[0])
     var fname = e.target.files[0].name;
     const res =
       fname.includes(".jpg") ||
@@ -26,8 +27,10 @@ export const Upload = () => {
     let formdata = new FormData();
     formdata.append("image", state);
     formdata.append("name", "Nayudu");
+    // formData.append('dpic',dpic.raw);
 
-    axios({ url: "/file", method: "POST", data: formdata }).then(
+
+    axios({ url: "/test", method: "POST", data: formdata }).then(
       (res) => {},
       (err) => {}
     );

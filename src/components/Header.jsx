@@ -1,7 +1,3 @@
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
-
 import {
   AppBar,
   Tabs,
@@ -10,15 +6,12 @@ import {
   Toolbar,
   useMediaQuery,
   useTheme,
-  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { Routes, Route, Link } from "react-router-dom";
-import AS from "../logo.png";
+import { Link } from "react-router-dom";
 import DrawerComp from "./DrawerComp";
-import { SignUp } from "./sample";
 
 // Array to display list of
 const PAGES = ["SignUp", "SignIn", "SignOut"];
