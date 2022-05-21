@@ -1,7 +1,14 @@
 body {
   top: 72px;
   position: relative;
-  background-color: rgba(118, 132, 147, 0.5);
+  background-color: rgba(99, 162, 224, 0.959);
   /* background-image: url(hexagons.svg) ; */
 }
- 
+.nayudu {
+  /* background-color: rgba(110, 131, 179, 0.553);  */
+  padding: 1.2em;
+}
+.pandu {
+  background-color: #b9e6ff60;
+  padding: 1.2em;
+}

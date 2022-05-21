@@ -4,7 +4,10 @@ import { SignUp, FormData, Copyright } from "./components/sample";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { CardN } from "./components/Card";
+import { BBox, CustomBreakpoints } from "./components/Demo";
 import { BodyData } from "./components/Body";
+
+import { UploadPP } from "./components/UploadImage";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -19,7 +22,9 @@ function App() {
           <Route path="/" element={<BodyData />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/form" element={<FormData />} />
-
+          <Route path="/demo" element={<BBox />} />
+          <Route path="/paramesh" element={<UploadPP />} />
+          <Route path="/demo1" element={<CustomBreakpoints />} />
           <Route
             path="/card"
             element={
@@ -50,16 +55,6 @@ function App() {
                     mobile: 9000000005,
                     address: "Address 5",
                   },
-                  {
-                    name: "Name 6",
-                    mobile: 9000000006,
-                    address: "Address 6",
-                  },
-                  {
-                    name: "Name 7",
-                    mobile: 9000000007,
-                    address: "Address 7",
-                  },
                 ]}
               />
             }
@@ -69,7 +64,6 @@ function App() {
             element={<CardN name="STAR" mobile="1122334455" />}
           />
         </Routes>
-
         {/* footer start  */}
         <Copyright sx={{ mt: 31 }} />
         {/* footer end  */}

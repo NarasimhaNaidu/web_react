@@ -109,10 +109,10 @@ export const SignUp = () => {
         justifyContent="flex-start"
         alignItems="stretch"
       >
-        <Box
+        <Box className="pandu"
           sx={{
-            borderRadius: "15px",
-            backgroundColor: "#FAF9F6",
+            borderRadius: "20px",
+            // backgroundColor: "rgb(174, 212, 255,0.70)",
             p: [3, 3, 3, 3],
             marginTop: 8,
             opacity: 0.95,
