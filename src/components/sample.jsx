@@ -5,11 +5,11 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
 const axios = require("axios");
 
 export const FormData = () => {
@@ -37,13 +37,14 @@ export const Copyright = (props) => {
 
 export const SignUp = () => {
   const theme = createTheme();
-  let history = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setcPassword] = useState("");
   const [mobile, setMobile] = useState("");
   const [err, setErr] = useState(0);
+
+  // const { userprofile, setUserProfile } = useContext(UserContext);
 
   useEffect(() => {
     getdata();
@@ -83,21 +84,21 @@ export const SignUp = () => {
       alert("Password Mismatch");
     } else {
       alert("USER ADDED");
-      const formdata = new FormData();
-      formdata.append("name", name);
-      formdata.append("mobile", mobile);
-      formdata.append("email", email);
-      formdata.append("password", password);
+      // const formdata = new FormData();
+      // formdata.append("name", name);
+      // formdata.append("mobile", mobile);
+      // formdata.append("email", email);
+      // formdata.append("password", password);
 
-      axios.post("/register", formdata).then(function(response) {
-        if (response.data.status === true) {
-          alert("axios call");
-        } else {
-          alert(response.data.msg);
-        }
-        console.log(response.data);
-      });
-      history("/form");
+      // axios.post("/register", formdata).then(function(response) {
+      //   if (response.data.status === true) {
+      //     alert("axios call");
+      //   } else {
+      //     alert(response.data.msg);
+      //   }
+      //   console.log(response.data);
+      // });
+      // history("/form");
     }
   };
   return (
@@ -109,7 +110,8 @@ export const SignUp = () => {
         justifyContent="flex-start"
         alignItems="stretch"
       >
-        <Box className="pandu"
+        <Box
+          className="pandu"
           sx={{
             borderRadius: "20px",
             // backgroundColor: "rgb(174, 212, 255,0.70)",

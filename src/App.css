@@ -2,13 +2,20 @@ body {
   top: 72px;
   position: relative;
   background-color: rgba(99, 162, 224, 0.959);
-  /* background-image: url(hexagons.svg) ; */
+  /* background-im: url(hexagons.svg) ; */
 }
 .nayudu {
-  /* background-color: rgba(110, 131, 179, 0.553);  */
   padding: 1.2em;
 }
 .pandu {
   background-color: #b9e6ff60;
+  padding: 1.2em;
+}
+.nobluelink{
+  
+/* on hover disable link blues */
+}
+.loginBg{
+  background-color: #43e99c6e;
   padding: 1.2em;
 }

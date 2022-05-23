@@ -31,7 +31,7 @@ export const UploadPP = () => {
         Select File&nbsp;&nbsp;&nbsp;
         <Button variant="contained" component="label">
           Choose File
-          <input
+          <input hidden
             type="file"
             id="contained-button-file1"
             onChange={(e) => {
