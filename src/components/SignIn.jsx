@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { UserContext } from "./usercontext";
+import { UserContext, SnackbarContext } from "./usercontext";
 import { useNavigate } from "react-router-dom";
 
 import Typography from "@mui/material/Typography";
@@ -16,7 +16,9 @@ import { ReusableTextField } from "./ReusableFormComp";
 // const axios = require("axios");
 
 export const SignIn = () => {
-  const { userprofile, setUserProfile } = useContext(UserContext);
+  const { setUserProfile } = useContext(UserContext);
+  const { setSnack } = useContext(SnackbarContext);
+
   let history = useNavigate();
 
   const theme = createTheme();
@@ -52,14 +54,27 @@ export const SignIn = () => {
     setErr(0);
     if (user.name === "") {
       setErr(1);
-      alert("Please Enter Name");
+      setSnack({
+        message: "Enter Your Name",
+        type: "error",
+        open: true,
+        direction: "center",
+      });
     } else if (user.password.length < 6) {
       setErr(2);
-      alert("Please Enter Valid 6 Digit Password");
+      setSnack({
+        message: "Enter Your Password",
+        type: "error",
+        open: true,
+        direction: "center",
+      });
     } else {
       history("/signout");
 
       setUserProfile({ user_name: user.name });
+
+      setSnack({ message: "user logged in successfully", open: true });
+
       //   const formdata = new FormData();
       //   formdata.append("name", user.name);
       //   formdata.append("mobileno", user.mobile);

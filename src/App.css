@@ -1,21 +1,30 @@
 body {
-  top: 72px;
-  position: relative;
+  border-top:100px;
   background-color: rgba(99, 162, 224, 0.959);
   /* background-im: url(hexagons.svg) ; */
 }
-.nayudu {
+/* .nayudu {
   padding: 1.2em;
-}
+} */
+
+
 .pandu {
   background-color: #b9e6ff60;
   padding: 1.2em;
 }
-.nobluelink{
-  
-/* on hover disable link blues */
+.nobluelink {
+  /* on hover disable link blues */
 }
-.loginBg{
+.loginBg {
   background-color: #43e99c6e;
   padding: 1.2em;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content-wrap {
+  flex: 1;
 }
