@@ -16,6 +16,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Signout } from "./components/signout";
 import { SignIn } from "./components/SignIn";
 import { Alert, Slide, Snackbar, Switch } from "@mui/material";
+import { CardN } from "./components/Card";
+import { CardProfile } from "./components/CardProfiles";
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
@@ -29,10 +31,11 @@ function App() {
   const snackValue = useMemo(() => ({ snack, setSnack }), [snack, setSnack]);
 
   return (
-    
     <div className="page-container">
       <div className="content-wrap">
-      <br/><br/><br/>
+        <br />
+        <br />
+        <br />
         <Snackbar
           // anchorOrigin={{
           //   vertical: "bottom",
@@ -68,33 +71,29 @@ function App() {
 
         <UserContext.Provider value={{ userprofile, setUserProfile }}>
           <SnackbarContext.Provider value={{ snack, setSnack }}>
-          
             <Router>
               {/* Nav bar start */}
               <Header />
               {/* Nav bar end */}
               <Routes>
-                <Route path="/signin" element={<SignIn />} />
-
                 <Route path="/" element={<BodyData />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/form" element={<FormData />} />
-                <Route path="/upload" element={<UploadPP />} />
+                <Route path="/upload" element={<UploadPP />} />{" "}
+                <Route path="/cards" element={userprofile && <CardProfile />} />
                 <Route path="/signin" element={<SignIn />} />
-
                 <Route
                   path="/signout"
                   element={userprofile ? <Signout /> : <Navigate to="/" />}
                 />
-                <Route path="/signin" element={<SignIn />} />
               </Routes>
-              {/* footer start  */}
-              {/* footer end  */}
             </Router>
           </SnackbarContext.Provider>
         </UserContext.Provider>
-      </div>
+      </div>{" "}
+      {/* footer start  */}
       <Copyright />
+      {/* footer end  */}
     </div>
   );
 }

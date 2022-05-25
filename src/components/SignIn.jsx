@@ -18,7 +18,6 @@ import { ReusableTextField } from "./ReusableFormComp";
 export const SignIn = () => {
   const { setUserProfile } = useContext(UserContext);
   const { setSnack } = useContext(SnackbarContext);
-
   let history = useNavigate();
 
   const theme = createTheme();
@@ -69,7 +68,7 @@ export const SignIn = () => {
         direction: "center",
       });
     } else {
-      history("/signout");
+      history("/cards");
 
       setUserProfile({ user_name: user.name });
 
