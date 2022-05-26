@@ -18,6 +18,7 @@ import { SignIn } from "./components/SignIn";
 import { Alert, Slide, Snackbar, Switch } from "@mui/material";
 import { CardN } from "./components/Card";
 import { CardProfile } from "./components/CardProfiles";
+import {AccountMenu} from "./components/menu";
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
@@ -71,6 +72,7 @@ function App() {
 
         <UserContext.Provider value={{ userprofile, setUserProfile }}>
           <SnackbarContext.Provider value={{ snack, setSnack }}>
+            <AccountMenu/>
             <Router>
               {/* Nav bar start */}
               <Header />
