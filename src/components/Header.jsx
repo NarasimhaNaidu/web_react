@@ -1,3 +1,5 @@
+import {AccountMenu} from "./menu";
+
 import {
   AppBar,
   Tabs,
@@ -7,16 +9,16 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import DrawerComp from "./DrawerComp";
+import { UserContext} from "./usercontext";
 
-// Array to display list of
-const PAGES = ["SignUp", "SignIn", "SignOut"];
 
 // styling for the hamburger with colors and paper
+
 // partial clarity on this function
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,6 +30,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const Header = () => {
+  const { userprofile, setUserProfile } = useContext(UserContext);
+
+
+  
   // "value" for navbar button selection
   const [value, setValue] = useState();
 
@@ -90,14 +96,13 @@ export const Header = () => {
                 indicatorColor="secondary"
                 onChange={(e, value) => setValue(value)}
               >
-                {PAGES.map((page, index) => (
-                  // to display nav links from array
-                  <Tab key={index} label={page} />
-                ))}
-                {/* <Tab label="Sign Up" value="0" />
-                  <Tab label="Sign In" value="1" />
-                  <Tab label="Sign Out" value="2" /> */}
+                <Tab label="Sign Up" value="0" />
+                
+                {!userprofile && <Tab label="Sign In" value="1" />}
+                {userprofile && <Tab label="Sign Out" value="2" />}
               </Tabs>
+              <AccountMenu/>
+
             </>
           )}
         </Toolbar>

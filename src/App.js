@@ -72,7 +72,6 @@ function App() {
 
         <UserContext.Provider value={{ userprofile, setUserProfile }}>
           <SnackbarContext.Provider value={{ snack, setSnack }}>
-            <AccountMenu/>
             <Router>
               {/* Nav bar start */}
               <Header />

@@ -9,15 +9,14 @@ export const UploadPP = () => {
   const [dpic, setDpic] = useState("");
 
   const UploadFile = (e) => {
+    
     alert("uploaded");
     const formdata = new FormData();
     formdata.append("image", state);
     formdata.append("file_name", "nayudu");
     formdata.append("dpic", dpic.raw);
 
-    axios
-      .post("/test", formdata) //
-      .then(function(response) {});
+    axios.post("/test", formdata).then(function(response) {});
   };
 
   return (
@@ -31,7 +30,8 @@ export const UploadPP = () => {
         Select File&nbsp;&nbsp;&nbsp;
         <Button variant="contained" component="label">
           Choose File
-          <input hidden
+          <input
+            hidden
             type="file"
             id="contained-button-file1"
             onChange={(e) => {

@@ -4,11 +4,11 @@ import { LoremIpsumP } from "./Lorem";
 import { UserContext } from "./usercontext";
 
 export const CardProfile = () => {
-  const { userprofile, setUserProfile } = useContext(UserContext);
+  const { userprofile} = useContext(UserContext);
 
   return (
     <div>
-      {userprofile ? (
+      {(userprofile) ? (
         <div>
           <p>
             By clicking any of the botton cards will take you to <b>Arawinz</b>{" "}
