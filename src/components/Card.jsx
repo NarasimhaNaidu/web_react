@@ -1,4 +1,6 @@
-import React from "react";
+import { UserContext } from "./usercontext";
+
+import React,{useContext} from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,7 +11,10 @@ const bull = (
     •
   </Box>
 );
+
 export const CardN = (props) => {
+  const { setUserProfile } = useContext(UserContext);
+
   return props.data.map((item, index) => {
     return (
       <Card
