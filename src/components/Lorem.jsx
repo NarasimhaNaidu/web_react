@@ -5,7 +5,7 @@ export const LoremIpsumP = () => {
     return (
       <div>
         <p>
-          orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
           risus interdum, posuere orci ullamcorper, maximus diam. Vestibulum
           malesuada ligula vitae ipsum suscipit, non sollicitudin lacus dignissim.
           Mauris sollicitudin mollis luctus. Aliquam erat volutpat. Integer a

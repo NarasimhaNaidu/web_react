@@ -1,3 +1,4 @@
+import { Naidu } from "./components/test";
 import React, { useContext, useMemo, useState } from "react";
 import "./App.css";
 import { SignUp, FormData, Copyright } from "./components/sample";
@@ -16,9 +17,9 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Signout } from "./components/signout";
 import { SignIn } from "./components/SignIn";
 import { Alert, Slide, Snackbar, Switch } from "@mui/material";
-import { CardN } from "./components/Card";
 import { CardProfile } from "./components/CardProfiles";
-import {AccountMenu} from "./components/menu";
+import { AccountMenu } from "./components/menu";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
@@ -74,6 +75,7 @@ function App() {
           <SnackbarContext.Provider value={{ snack, setSnack }}>
             <Router>
               {/* Nav bar start */}
+              {console.log(userprofile)}
               <Header />
               {/* Nav bar end */}
               <Routes>
@@ -81,18 +83,19 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/form" element={<FormData />} />
                 <Route path="/upload" element={<UploadPP />} />{" "}
-                <Route path="/cards" element={userprofile && <CardProfile />} />
+                <Route path="/naidu" element={<Naidu />} />{" "}
                 <Route path="/signin" element={<SignIn />} />
-                <Route
-                  path="/signout"
-                  element={userprofile ? <Signout /> : <Navigate to="/" />}
-                />
+                <Route path="/*" element={<PrivateRoute />}>
+                  <Route path="/cards" element={<CardProfile />} />
+                  <Route path="/signout" element={<Signout />} />
+                </Route>
               </Routes>
             </Router>
           </SnackbarContext.Provider>
         </UserContext.Provider>
       </div>{" "}
       {/* footer start  */}
+      {console.log(userprofile)}
       <Copyright />
       {/* footer end  */}
     </div>
