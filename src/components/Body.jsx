@@ -30,8 +30,9 @@ export function BodyData() {
         <Link to="/upload">File Upload</Link>&nbsp;&nbsp;&nbsp;
         <Link to="/signin">SIGN IN </Link>&nbsp;&nbsp;&nbsp;
         {userprofile && <Link to="/signout">logout page </Link>}
-        <LoremIpsumP />
         <CustomizedSnackbars />
+
+        <LoremIpsumP />
         <br />
        
       </div>{" "}

@@ -19,6 +19,7 @@ import { Alert, Slide, Snackbar, Switch } from "@mui/material";
 import { CardN } from "./components/Card";
 import { CardProfile } from "./components/CardProfiles";
 import {AccountMenu} from "./components/menu";
+import Griddd from "./components/grid";
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
@@ -81,6 +82,8 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/form" element={<FormData />} />
                 <Route path="/upload" element={<UploadPP />} />{" "}
+                <Route path="/grid" element={<Griddd />} />{" "}
+                
                 <Route path="/cards" element={userprofile && <CardProfile />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route

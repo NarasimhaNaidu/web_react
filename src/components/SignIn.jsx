@@ -29,7 +29,7 @@ export const SignIn = () => {
   }, []);
 
   const getdata = () => {
-    console.log("getData Called");
+    // console.log("getData Called");
 
     // const formdata = new FormData();
     // formdata.append("id", id);
@@ -68,6 +68,12 @@ export const SignIn = () => {
         direction: "center",
       });
     } else {
+      localStorage.setItem("name", user.name);
+      localStorage.setItem("password", user.password);
+
+      console.log(localStorage.getItem("name"))
+      console.log(localStorage.getItem("password"))
+
       history("/cards");
 
       setUserProfile({ user_name: user.name });
