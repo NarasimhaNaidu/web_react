@@ -39,11 +39,11 @@ export const Header = () => {
 
   // inbult theme for navbar
   const theme = useTheme();
-  console.log(theme);
+  // console.log(theme);
 
   // checking if the screen is below md and then placing hamburger menu
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(isMatch);
+  // console.log(isMatch);
 
   return (
     <React.Fragment>
