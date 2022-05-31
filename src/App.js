@@ -1,4 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
+import { Naidu } from "./components/test";
 import "./App.css";
 import { SignUp, FormData, Copyright } from "./components/sample";
 import {
@@ -15,10 +16,8 @@ import { UploadPP } from "./components/UploadImage";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Signout } from "./components/signout";
 import { SignIn } from "./components/SignIn";
-import { Alert, Slide, Snackbar, Switch } from "@mui/material";
-import { CardN } from "./components/Card";
+import { Alert, Slide, Snackbar } from "@mui/material";
 import { CardProfile } from "./components/CardProfiles";
-import {AccountMenu} from "./components/menu";
 import Griddd from "./components/grid";
 
 function App() {
@@ -75,6 +74,7 @@ function App() {
           <SnackbarContext.Provider value={{ snack, setSnack }}>
             <Router>
               {/* Nav bar start */}
+              {console.log(userprofile)}
               <Header />
               {/* Nav bar end */}
               <Routes>
@@ -83,19 +83,18 @@ function App() {
                 <Route path="/form" element={<FormData />} />
                 <Route path="/upload" element={<UploadPP />} />{" "}
                 <Route path="/grid" element={<Griddd />} />{" "}
-                
                 <Route path="/cards" element={userprofile && <CardProfile />} />
                 <Route path="/signin" element={<SignIn />} />
-                <Route
-                  path="/signout"
-                  element={userprofile ? <Signout /> : <Navigate to="/" />}
-                />
+                <Route path="/cards" element={<CardProfile />} />
+                <Route path="/signout" element={<Signout />} />
               </Routes>
             </Router>
           </SnackbarContext.Provider>
         </UserContext.Provider>
       </div>{" "}
       {/* footer start  */}
+      {console.log(userprofile)}
+      <Naidu />
       <Copyright />
       {/* footer end  */}
     </div>

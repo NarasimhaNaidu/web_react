@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 import { CardN } from "./Card";
 import { LoremIpsumP } from "./Lorem";
-import { UserContext } from "./usercontext";
 
 export const CardProfile = () => {
-  const { userprofile} = useContext(UserContext);
 
   return (
     <div>
-      {(userprofile) ? (
         <div>
           <p>
             By clicking any of the botton cards will take you to <b>Arawinz</b>{" "}
@@ -24,13 +21,6 @@ export const CardProfile = () => {
             ]}
           />
         </div>
-      ) : (
-        <div>
-          <p>No User Logged in</p>
-          <LoremIpsumP />
-
-        </div>
-      )}
     </div>
   );
 };
