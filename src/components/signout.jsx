@@ -7,7 +7,12 @@ export const Signout = () => {
   return (
     <div>
       <h5>this is logout page</h5>
-      <h3>user details are{"  "+userprofile && userprofile.user_name } </h3>
+      {userprofile ? (
+        <h3>user details are{"  " + userprofile && userprofile.user_name} </h3>
+      ) : (
+        <p>no user logged in</p>
+      )}
+
       <Button
         onClick={() => {
           setUserProfile(null);

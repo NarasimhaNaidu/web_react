@@ -26,12 +26,18 @@ export function BodyData() {
         <Link to="/signup">Register</Link>&nbsp;&nbsp;&nbsp;&nbsp;
         {/* <Link to="/">Login</Link>&nbsp;&nbsp;&nbsp; */}
         <Link to="/form">Form Data</Link>&nbsp;&nbsp;&nbsp;
+        <Link to="/fetchapi">F API</Link>&nbsp;&nbsp;&nbsp;
+        
         <Link to="/cards">Cards</Link>&nbsp;&nbsp;&nbsp;
         <Link to="/upload">File Upload</Link>&nbsp;&nbsp;&nbsp;
+         
+        <Link to="/gender">Gender</Link>&nbsp;&nbsp;&nbsp;
         <Link to="/signin">SIGN IN </Link>&nbsp;&nbsp;&nbsp;
         {userprofile && <Link to="/signout">logout page </Link>}
         <CustomizedSnackbars />
-
+        <Link to="/localstorage">Local Storage</Link>&nbsp;&nbsp;&nbsp;
+        <Link to="/signuppp">New LOGGINNN</Link>&nbsp;&nbsp;&nbsp;
+       
         <LoremIpsumP />
         <br />
        

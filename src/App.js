@@ -1,7 +1,12 @@
 import React, { useContext, useMemo, useState } from "react";
 import { Naidu } from "./components/test";
 import "./App.css";
-import { SignUp, FormData, Copyright } from "./components/sample";
+import { SignUp } from "./components/sample";
+import { SignUppp} from "./components/NewForm";
+
+import { FormData } from "./components/FormData";
+
+import { Footer } from "./components/Footer";
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,7 +23,9 @@ import { Signout } from "./components/signout";
 import { SignIn } from "./components/SignIn";
 import { Alert, Slide, Snackbar } from "@mui/material";
 import { CardProfile } from "./components/CardProfiles";
-import Griddd from "./components/grid";
+import Griddd from "./components/Gridd";
+import { RadioButton } from "./components/gender";
+import { FetchApi } from "./components/fetch";
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
@@ -81,12 +88,18 @@ function App() {
                 <Route path="/" element={<BodyData />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/form" element={<FormData />} />
-                <Route path="/upload" element={<UploadPP />} />{" "}
-                <Route path="/grid" element={<Griddd />} />{" "}
-                <Route path="/cards" element={userprofile && <CardProfile />} />
+                <Route path="/upload" element={<UploadPP />} />
+                <Route path="/grid" element={<Griddd />} />
+                <Route path="/localstorage" element={<Naidu />} />
+                <Route path="/fetchapi" element={<FetchApi />} />
+                <Route path="/gender" element={<RadioButton />} />
+                
+                <Route path="/cards" element={<CardProfile />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/cards" element={<CardProfile />} />
                 <Route path="/signout" element={<Signout />} />
+                <Route path="/signuppp" element={<SignUppp />} />
+                
               </Routes>
             </Router>
           </SnackbarContext.Provider>
@@ -94,8 +107,7 @@ function App() {
       </div>{" "}
       {/* footer start  */}
       {console.log(userprofile)}
-      <Naidu />
-      <Copyright />
+      <Footer />
       {/* footer end  */}
     </div>
   );
