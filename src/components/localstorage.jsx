@@ -5,12 +5,12 @@ export const Naidu = () => {
   const [pwd, setPwd] = useState("");
 
   const handle = () => {
-    localStorage.setItem("Name", name);
-    localStorage.setItem("Password", pwd);
+    localStorage.setItem("UName", name);
+    localStorage.setItem("UPassword", pwd);
   };
   const remove = () => {
-    localStorage.removeItem("Name");
-    localStorage.removeItem("Password");
+    localStorage.removeItem("UName");
+    localStorage.removeItem("UPassword");
   };
   return (
     <div className="App">
@@ -30,14 +30,16 @@ export const Naidu = () => {
       <div>
         <button onClick={handle}>Done</button>
       </div>
-      {localStorage.getItem("Name") && (
+
+      {localStorage.getItem("UName") && (
         <div>
-          Name: <p>{localStorage.getItem("Name")}</p>
+          {" "}
+          Name: <p>{localStorage.getItem("UName")}</p>
         </div>
       )}
-      {localStorage.getItem("Password") && (
+      {localStorage.getItem("UPassword") && (
         <div>
-          Password: <p>{localStorage.getItem("Password")}</p>
+          Password: <p>{localStorage.getItem("UPassword")}</p>
         </div>
       )}
       <div>

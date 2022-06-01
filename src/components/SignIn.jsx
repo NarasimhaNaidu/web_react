@@ -6,13 +6,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { UserContext, SnackbarContext } from "./usercontext";
 import { Link, useNavigate } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { ReusableTextField } from "./ReusableFormComp";
-
 // const axios = require("axios");
 
 export const SignIn = () => {
@@ -24,19 +21,21 @@ export const SignIn = () => {
 
   const [user, setUsers] = useState({ name: "", password: "" });
   const [err, setErr] = useState(0);
+
   useEffect(() => {
-    getdata();
+    console.log(localStorage.getItem("UName"));
+
+    setUserProfile({ user_name: localStorage.getItem("UName") });
   }, []);
+  // getdata();
 
   const getdata = () => {
     // console.log("getData Called");
-
     // const formdata = new FormData();
     // formdata.append("id", id);
     // axios.post("/singleuser", formdata).then(function(response) {
     //   if (response.data.status === true) {
     //     console.log(response.data);
-
     //     setUsers({
     //       name: response.data.data.name,
     //       mobile: response.data.data.mobileno,
@@ -50,51 +49,73 @@ export const SignIn = () => {
 
   const validateForm = (e) => {
     e.preventDefault();
-    setErr(0);
-    if (user.name === "") {
-      setErr(1);
+
+    if (localStorage.getItem("UName")) {
+      console.log(localStorage.getItem("UName"));
+
+      console.log("set user context");
+      setUserProfile({ user_name: localStorage.getItem("UName") });
+
       setSnack({
-        message: "Enter Your Name",
-        type: "error",
+        message: "User Exists In Session",
+        type: "info",
         open: true,
         direction: "center",
       });
-    } else if (user.password.length < 6) {
-      setErr(2);
-      setSnack({
-        message: "Enter Your Password",
-        type: "error",
-        open: true,
-        direction: "center",
-      });
+      history("/signout");
     } else {
-      localStorage.setItem("name", user.name);
-      localStorage.setItem("password", user.password);
+      console.log("logging in");
 
-      console.log(localStorage.getItem("name"))
-      console.log(localStorage.getItem("password"))
+      setErr(0);
+      if (user.name === "") {
+        setErr(1);
+        setSnack({
+          message: "Enter Your Name",
+          type: "error",
+          open: true,
+          direction: "center",
+        });
+      } else if (user.password.length < 6) {
+        setErr(2);
+        setSnack({
+          message: "Enter Your Password",
+          type: "error",
+          open: true,
+          direction: "center",
+        });
+      } else {
+        localStorage.getItem("UName")
+          ? console.log(localStorage.getItem("UName"))
+          : console.log("No User Logged IN");
 
-      history("/cards");
+        localStorage.setItem("UName", user.name);
+        localStorage.setItem("UPassword", user.password);
 
-      setUserProfile({ user_name: user.name });
+        // console.log(localStorage.getItem("UName"));
+        // console.log(localStorage.getItem("UPassword"));
 
-      setSnack({ message: "user logged in successfully", open: true });
+        history("/cards");
 
-      //   const formdata = new FormData();
-      //   formdata.append("name", user.name);
-      //   formdata.append("mobileno", user.mobile);
-      //   formdata.append("email", user.email);
-      //   formdata.append("id", id);
+        setUserProfile({ user_name: user.name });
 
-      //   axios.post("/", formdata).then(function(response) {
-      //     if (response.data.status === true) {
-      //       //  history("/data")
-      //       console.log(response.data);
-      //     } else {
-      //       alert(response.data.msg);
-      //     }
-      //     console.log(response.data);
-      //   });
+        setSnack({ message: "user logged in successfully", open: true });
+
+        //   const formdata = new FormData();
+        //   formdata.append("name", user.name);
+        //   formdata.append("mobileno", user.mobile);
+        //   formdata.append("email", user.email);
+        //   formdata.append("id", id);
+
+        //   axios.post("/", formdata).then(function(response) {
+        //     if (response.data.status === true) {
+        //       //  history("/data")
+        //       console.log(response.data);
+        //     } else {
+        //       alert(response.data.msg);
+        //     }
+        //     console.log(response.data);
+        //   });
+      } //if of loc store
     }
   };
 
@@ -165,7 +186,10 @@ export const SignIn = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: "#28a745", caretColor: "#00ca4e" }}
+                sx={{ mt: 3, mb: 2, bgcolor: "#28a745",
+                '&:hover': {
+                  background: '28a745'
+                }, caretColor: "red" }}
               >
                 <b>Sign In</b>
               </Button>

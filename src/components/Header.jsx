@@ -1,4 +1,4 @@
-import {AccountMenu} from "./menu";
+import { AccountMenu } from "./menu";
 
 import {
   AppBar,
@@ -14,8 +14,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import DrawerComp from "./DrawerComp";
-import { UserContext} from "./usercontext";
-
+import { UserContext } from "./usercontext";
 
 // styling for the hamburger with colors and paper
 
@@ -29,11 +28,21 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+function LinkTab(props) {
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
+
 export const Header = () => {
   const { userprofile, setUserProfile } = useContext(UserContext);
 
-
-  
   // "value" for navbar button selection
   const [value, setValue] = useState();
 
@@ -96,13 +105,21 @@ export const Header = () => {
                 indicatorColor="secondary"
                 onChange={(e, value) => setValue(value)}
               >
-                <Tab label="Sign Up" value="0" />
-                
+                <Link to="/">
+                  <Tab label="Sign Up" value="0" />
+                </Link>
+
                 {!userprofile && <Tab label="Sign In" value="1" />}
                 {userprofile && <Tab label="Sign Out" value="2" />}
+                <Tab onClick={"/"} label="Nayudu" value="3" />
               </Tabs>
-              <AccountMenu/>
 
+              <Tabs value={value} aria-label="nav tabs example">
+                <LinkTab label="Form" href="/form" />
+                <LinkTab label="Page Two" href="/trash" />
+                <LinkTab label="Page Three" href="/spam" />
+              </Tabs>
+              <AccountMenu />
             </>
           )}
         </Toolbar>

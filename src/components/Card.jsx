@@ -1,6 +1,6 @@
-import { UserContext} from "./usercontext";
+import { UserContext } from "./usercontext";
 
-import React,{useContext,useReducer,useEffect} from "react";
+import React, { useContext, useReducer, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -11,34 +11,9 @@ const bull = (
     •
   </Box>
 );
-const initialTodos = [
-  {
-    image: ""
-  }
-];
-
-const reducer = (state, action) => {
-  console.log(state, action,"state, action")
-  switch (action.type) {
-    case "SETIMAGE":
-      return {image : action.initialTodos}
-    default:
-      return state;
-  }
-};
 
 export const CardN = (props) => {
-  const [todos, dispatch] = useReducer(reducer, initialTodos);
-
-  useEffect(()=>{
-    if(todos.length <= 0){
-      dispatch({ type: "SETIMAGE", initialTodos: 'https://picsum.photos/200/300' });
-    }
-  },[])
-
   const { setUserProfile } = useContext(UserContext);
-
-  console.log(todos,"SETIMAGE")
 
   return props.data.map((item, index) => {
     return (
@@ -66,7 +41,7 @@ export const CardN = (props) => {
                 maxWidth: { xs: 350, md: 250 },
               }}
               alt="image_card"
-              src="https://picsum.photos/200/300"
+              src={item.image}
             />
             <Typography sx={{ fontSize: 26 }} color="white" gutterBottom>
               {item.email || ""}
