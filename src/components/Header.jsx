@@ -105,18 +105,17 @@ export const Header = () => {
                 indicatorColor="secondary"
                 onChange={(e, value) => setValue(value)}
               >
-                <Tab label="Sign Up" value="0" />
+                <Link to="/">
+                  <Tab label="Sign Up" value="0" />
+                </Link>
 
                 {!userprofile && <Tab label="Sign In" value="1" />}
                 {userprofile && <Tab label="Sign Out" value="2" />}
                 <Tab onClick={"/"} label="Nayudu" value="3" />
               </Tabs>
 
-              <Tabs
-                value={value}
-                aria-label="nav tabs example"
-              >
-                <LinkTab label="FOrm" href="/form" />
+              <Tabs value={value} aria-label="nav tabs example">
+                <LinkTab label="Form" href="/form" />
                 <LinkTab label="Page Two" href="/trash" />
                 <LinkTab label="Page Three" href="/spam" />
               </Tabs>
