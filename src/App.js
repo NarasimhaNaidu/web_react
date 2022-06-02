@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
+import { useTheme, useMediaQuery } from "@mui/material";
+
 import { Naidu } from "./components/localstorage";
 import { SignUp } from "./components/sample";
 import { SignUppp } from "./components/NewForm";
@@ -24,6 +26,7 @@ import { RadioButton } from "./components/gender";
 import { FetchApi } from "./components/fetch";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import SimpleAccordion from "./components/acc";
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
@@ -45,6 +48,10 @@ function App() {
 
   },[])
   const snackValue = useMemo(() => ({ snack, setSnack }), [snack, setSnack]);
+  
+  
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <div className="page-container">
@@ -114,7 +121,11 @@ function App() {
       </div>{" "}
       {/* footer start  */}
       {/* {console.log(userprofile)} */}
-      <Footer />
+
+      <React.Fragment>
+              {isMatch ? (<SimpleAccordion/>):(<Footer />)}
+      </React.Fragment>
+
       {/* footer end  */}
     </div>
   );

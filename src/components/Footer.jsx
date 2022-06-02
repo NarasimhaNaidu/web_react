@@ -1,5 +1,7 @@
 import "./Footer.css";
 import React from "react";
+import { Anchor } from "@mui/icons-material";
+import { Link } from "@mui/material";
 
 export const Footer = (props) => {
   return (
@@ -16,21 +18,25 @@ export const Footer = (props) => {
             </h1>
           </div>
           {/* Column2 */}
-          <div className="col">
+          {/* <div className="col">
             <h4>Demo</h4>
             <ui className="list-unstyled">
               <li>SAMPLE 01</li>
               <li>SAMPLE 02</li>
               <li>SAMPLE 03</li>
             </ui>
-          </div>
+          </div> */}
           {/* Column3 */}
           <div className="col">
-            <h4>WELL ANOTHER COLUMN</h4>
             <ui className="list-unstyled">
-              <li>Demo 01</li>
-              <li>Demo 02</li>
-              <li>Demo 03</li>
+              <h4>Our Services</h4>
+              <h5>
+                <li>Application Development</li>
+                <li>E-Commerce</li>
+                <li>Data Analytics</li>
+                <li>ERP &#38; CRM</li>
+                <li>Digital Marketing</li>
+              </h5>
             </ui>
           </div>
         </div>
@@ -38,8 +44,16 @@ export const Footer = (props) => {
         <center>
           <div className="row">
             <p className="col-sm">
-              &copy;{new Date().getFullYear()} Arawinz Soft Solutions | All
-              rights reserved | Terms Of Service | Privacy
+              &copy; {new Date().getFullYear()} &nbsp;
+              <Link
+                className="onhover-none"
+                color="white"
+                href="www.arawinz.com"
+                underline="none"
+              >
+                Arawinz Soft Solutions &nbsp;
+              </Link>
+              | All rights reserved | Terms Of Service | Privacy Policy
             </p>
           </div>
         </center>

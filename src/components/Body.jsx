@@ -1,3 +1,4 @@
+import SimpleAccordion from "./acc";
 import { UserContext, SnackbarContext } from "./usercontext";
 import { useContext } from "react";
 import * as React from "react";
@@ -38,7 +39,8 @@ export function BodyData() {
         <br /> <br /> <br />
         <Link to="/signout">logout page </Link>
         {console.log(userprofile)}
-        <LoremIpsumP />
+        
+        {/* <LoremIpsumP /> */}
         <br />
       </div>{" "}
     </Container>
