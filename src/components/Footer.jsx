@@ -74,5 +74,6 @@ export const Footer = (props) => {
     //   {"2018 - 2022"}
     //   {"."}
     // </Typography>
+    
   );
 };

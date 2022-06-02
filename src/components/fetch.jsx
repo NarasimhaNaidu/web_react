@@ -26,11 +26,12 @@ export const FetchApi = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    console.log(initialState.data,"initialState.data")
     getData();
   }, []);
 
   const getData = async () => {
-    if (initialState.data.length === 0) {
+    if (state.data.length === 0) {
       const req = await axios.get(
         "https://jsonplaceholder.typicode.com/photos"
       );
