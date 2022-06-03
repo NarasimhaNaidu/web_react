@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useReducer, useState } from "react";
+import { useTheme, useMediaQuery } from "@mui/material";
+
 import { Naidu } from "./components/localstorage";
 import { SignUp } from "./components/sample";
 import { SignUppp } from "./components/NewForm";
@@ -13,7 +15,7 @@ import {
 } from "react-router-dom";
 import { Header } from "./components/Header";
 import { BodyData } from "./components/Body";
-import { SnackbarContext, UserContext } from "./components/usercontext";
+import { initialState, reducer, SnackbarContext, UserContext } from "./components/usercontext";
 import { UploadPP } from "./components/UploadImage";
 import { Signout } from "./components/signout";
 import { SignIn } from "./components/SignIn";
@@ -24,53 +26,63 @@ import { RadioButton } from "./components/gender";
 import { FetchApi } from "./components/fetch";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import SimpleAccordion from "./components/acc";
+import { createTheme,ThemeProvider } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#fefefe",
+      
+    },
+    secondary: purple,
+  },
+  typography: {
+    fontFamily: "Josefin Sans",
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
+  },
+});
 
 function App() {
   const [userprofile, setUserProfile] = useState(null);
-  
+
   const [snack, setSnack] = useState({
     message: "",
     color: "",
     open: false,
   });
 
-
-
-  useEffect(()=>{
-    var localdata=localStorage.getItem("UName");
-    if(localdata!==null){
+  useEffect(() => {
+    var localdata = localStorage.getItem("UName");
+    if (localdata !== null) {
       setUserProfile({ user_name: localStorage.getItem("UName") });
     }
-    
-
-  },[])
+  }, []);
   const snackValue = useMemo(() => ({ snack, setSnack }), [snack, setSnack]);
 
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
+  const [state, setState] = useReducer(reducer, initialState);
+
   return (
-    <div className="page-container">
-      <div className="content-wrap">
-        <br />
-        <br />
-        <br />
-        <Snackbar
-          // anchorOrigin={{
-          //   vertical: "bottom",
-          //   horizontal: snack.direction,
-          // }}
-          autoHideDuration={3000}
-          open={snack.open}
-          onClose={() => {
-            setSnack((prevdata) => {
-              return {
-                ...prevdata,
-                open: false,
-              };
-            });
-          }}
-          TransitionComponent={Slide}
-        >
-          <Alert
-            variant="filled"
+    <ThemeProvider theme={theme}>
+      <div className="page-container">
+        <div className="content-wrap">
+          <br />
+          <br />
+          <br />
+          <Snackbar
+            // anchorOrigin={{
+            //   vertical: "bottom",
+            //   horizontal: snack.direction,
+            // }}
+            autoHideDuration={3000}
+            open={snack.open}
             onClose={() => {
               setSnack((prevdata) => {
                 return {
@@ -79,44 +91,59 @@ function App() {
                 };
               });
             }}
-            severity={snack.type}
+            TransitionComponent={Slide}
           >
-            {snack.message}
-          </Alert>
-        </Snackbar>
+            <Alert
+              variant="filled"
+              onClose={() => {
+                setSnack((prevdata) => {
+                  return {
+                    ...prevdata,
+                    open: false,
+                  };
+                });
+              }}
+              severity={snack.type}
+            >
+              {snack.message}
+            </Alert>
+          </Snackbar>
 
-        <UserContext.Provider value={{ userprofile, setUserProfile }}>
-          <SnackbarContext.Provider value={{ snack, setSnack }}>
-            <Router>
-              {/* Nav bar start */}
-              {/* {console.log(userprofile)} */}
-              <Header />
-              {/* Nav bar end */}
-              <Routes>
-                <Route path="/" element={<BodyData />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/form" element={<FormData />} />
-                <Route path="/upload" element={<UploadPP />} />
-                <Route path="/grid" element={<Griddd />} />
-                <Route path="/localstorage" element={<Naidu />} />
-                <Route path="/fetchapi" element={<FetchApi />} />
-                <Route path="/gender" element={<RadioButton />} />
+          <UserContext.Provider value={{ userprofile, setUserProfile }}>
+            <SnackbarContext.Provider value={{ snack, setSnack }}>
+              <Router>
+                {/* Nav bar start */}
+                {/* {console.log(userprofile)} */}
+                <Header />
+                {/* Nav bar end */}
+                <Routes>
+                  <Route path="/" element={<BodyData />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/form" element={<FormData />} />
+                  <Route path="/upload" element={<UploadPP />} />
+                  <Route path="/grid" element={<Griddd />} />
+                  <Route path="/localstorage" element={<Naidu />} />
+                  <Route path="/fetchapi" element={<FetchApi />} />
+                  <Route path="/gender" element={<RadioButton />} />
 
-                <Route path="/cards" element={<CardProfile />} />
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/cards" element={<CardProfile />} />
-                <Route path="/signout" element={<Signout />} />
-                <Route path="/signuppp" element={<SignUppp />} />
-              </Routes>
-            </Router>
-          </SnackbarContext.Provider>
-        </UserContext.Provider>
-      </div>{" "}
-      {/* footer start  */}
-      {/* {console.log(userprofile)} */}
-      <Footer />
-      {/* footer end  */}
-    </div>
+                  <Route path="/cards" element={<CardProfile />} />
+                  <Route path="/signin" element={<SignIn />} />
+                  <Route path="/cards" element={<CardProfile />} />
+                  <Route path="/signout" element={<Signout />} />
+                  <Route path="/signuppp" element={<SignUppp />} />
+                </Routes>
+              </Router>
+            </SnackbarContext.Provider>
+          </UserContext.Provider>
+        </div>{" "}
+        {/* footer start  */}
+        {/* {console.log(userprofile)} */}
+        <React.Fragment>
+          {isMatch ? <SimpleAccordion /> : <Footer />}
+        </React.Fragment>
+        {/* footer end  */}
+      </div>
+    </ThemeProvider>
   );
 }
 export default App;

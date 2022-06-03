@@ -1,4 +1,5 @@
-import { UserContext, SnackbarContext } from "./usercontext";
+import SimpleAccordion from "./acc";
+import { UserContext, SnackbarContext, reducer, initialState, DINEIN } from "./usercontext";
 import { useContext } from "react";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
@@ -18,8 +19,13 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export function BodyData() {
   const { userprofile, setUserProfile } = useContext(UserContext);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
   const { snack, setSnack } = useContext(SnackbarContext);
-
+  console.log(state);
+  const setRed = (e) => {
+    console.log(dispatch({ type : DINEIN,payload: e.target.value }))
+    
+  };
   return (
     <Container>
       <div className="nayudu">
@@ -38,7 +44,8 @@ export function BodyData() {
         <br /> <br /> <br />
         <Link to="/signout">logout page </Link>
         {console.log(userprofile)}
-        <LoremIpsumP />
+        <input onChange={(e) => setRed(e)}  />
+        {/* <LoremIpsumP /> */}
         <br />
       </div>{" "}
     </Container>

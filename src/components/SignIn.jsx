@@ -181,18 +181,23 @@ export const SignIn = () => {
                   />
                 </Grid>
               </Grid>
+
+              
               <Button
                 onClick={validateForm}
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: "#28a745",
-                '&:hover': {
-                  background: '28a745'
-                }, caretColor: "red" }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  bgcolor: "#28a745",
+                  caretColor: "red",
+                }}
               >
                 <b>Sign In</b>
               </Button>
+              
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   {/* <Link href="#" variant="body2">
@@ -204,10 +209,6 @@ export const SignIn = () => {
           </Box>
         </Container>
       </ThemeProvider>
-      <br />
-      <br />
-      <br />
-      <br />
       <br />
       <br />
       <br />
