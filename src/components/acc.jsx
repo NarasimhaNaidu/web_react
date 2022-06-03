@@ -62,12 +62,11 @@ export default function SimpleAccordion() {
               Arawinz Soft Solutions,
               <br /> +91 91234 56789,
               <br /> Gachibowli, Hyderabad,
-              <br /> Telangana - 500 072.
+              <br /> Telangana - 500 032.
             </Typography>
           </AccordionDetails>
         </Accordion>
       </div>
-      
     </React.Fragment>
   );
 }

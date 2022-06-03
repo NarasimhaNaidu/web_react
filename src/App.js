@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useMemo, useReducer, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from "react";
 import { useTheme, useMediaQuery } from "@mui/material";
 
 import { Naidu } from "./components/localstorage";
@@ -15,7 +21,12 @@ import {
 } from "react-router-dom";
 import { Header } from "./components/Header";
 import { BodyData } from "./components/Body";
-import { initialState, reducer, SnackbarContext, UserContext } from "./components/usercontext";
+import {
+  initialState,
+  reducer,
+  SnackbarContext,
+  UserContext,
+} from "./components/usercontext";
 import { UploadPP } from "./components/UploadImage";
 import { Signout } from "./components/signout";
 import { SignIn } from "./components/SignIn";
@@ -27,14 +38,14 @@ import { FetchApi } from "./components/fetch";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import SimpleAccordion from "./components/acc";
-import { createTheme,ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
+import BasicTable from "./components/table";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "#fefefe",
-      
     },
     secondary: purple,
   },
@@ -125,8 +136,7 @@ function App() {
                   <Route path="/localstorage" element={<Naidu />} />
                   <Route path="/fetchapi" element={<FetchApi />} />
                   <Route path="/gender" element={<RadioButton />} />
-
-                  <Route path="/cards" element={<CardProfile />} />
+                  <Route path="/table" element={<BasicTable />} />
                   <Route path="/signin" element={<SignIn />} />
                   <Route path="/cards" element={<CardProfile />} />
                   <Route path="/signout" element={<Signout />} />
@@ -138,9 +148,9 @@ function App() {
         </div>{" "}
         {/* footer start  */}
         {/* {console.log(userprofile)} */}
-        <React.Fragment>
+        {/* <React.Fragment> */}
           {isMatch ? <SimpleAccordion /> : <Footer />}
-        </React.Fragment>
+        {/* </React.Fragment> */}
         {/* footer end  */}
       </div>
     </ThemeProvider>

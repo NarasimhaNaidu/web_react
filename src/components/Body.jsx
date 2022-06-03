@@ -45,7 +45,7 @@ export function BodyData() {
         <Link to="/signout">logout page </Link>
         {console.log(userprofile)}
         <input onChange={(e) => setRed(e)}  />
-        {/* <LoremIpsumP /> */}
+        <LoremIpsumP />
         <br />
       </div>{" "}
     </Container>

@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import { Link } from "@mui/material";
 
 export function AccountMenu() {
   const { userprofile, setUserProfile } = useContext(UserContext);
@@ -78,11 +79,18 @@ export function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <Avatar /> Profile
+        <MenuItem
+          onClick={() => {
+            alert("Please Enter Name");
+          }}
+        >
+          <Avatar />
+          Profile
         </MenuItem>
         <MenuItem>
-          <Avatar /> My account
+          <Link href="/" underline="none">
+            <Avatar /> My account
+          </Link>
         </MenuItem>
         <Divider />
         <MenuItem>

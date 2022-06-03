@@ -5,9 +5,11 @@ import {
   Tabs,
   Tab,
   Grid,
+  Button,
   Toolbar,
   useMediaQuery,
   useTheme,
+  ButtonGroup,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { styled } from "@mui/material/styles";
@@ -98,7 +100,22 @@ export const Header = () => {
                   height={50}
                 />
               </Link>
-              <Tabs
+              <ButtonGroup
+                sx={{ marginLeft: "auto" }}
+                variant="outlined"
+                aria-label="outlined primary button group"
+              >
+                <Button style={{ color: "#ffffff", borderColor: "#ffffff80" }}>
+                  Sign Up
+                </Button>
+                <Button style={{ color: "#ffffff", borderColor: "#ffffff80" }}>
+                  Sign In
+                </Button>
+                <Button style={{ color: "#ffffff", borderColor: "#ffffff80" }}>
+                  Sign Out
+                </Button>
+              </ButtonGroup>
+              {/* <Tabs
                 sx={{ marginLeft: "auto" }}
                 value={value}
                 textColor="inherit"
@@ -112,13 +129,13 @@ export const Header = () => {
                 {!userprofile && <Tab label="Sign In" value="1" />}
                 {userprofile && <Tab label="Sign Out" value="2" />}
                 <Tab onClick={"/"} label="Nayudu" value="3" />
-              </Tabs>
-
+              </Tabs> */}
+              {/* 
               <Tabs value={value} aria-label="nav tabs example">
                 <LinkTab label="Form" href="/form" />
                 <LinkTab label="Page Two" href="/trash" />
                 <LinkTab label="Page Three" href="/spam" />
-              </Tabs>
+              </Tabs> */}
               <AccountMenu />
             </>
           )}
