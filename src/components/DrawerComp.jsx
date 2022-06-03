@@ -14,7 +14,7 @@ const PAGES = ["SignUp", "SignIn", "SignOut"];
 const DrawerComp = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
-    // <React.Fragment>
+    <React.Fragment>
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List>
           {PAGES.map((page, index) => (
@@ -36,7 +36,7 @@ const DrawerComp = () => {
       >
         <MenuIcon />
       </IconButton>
-    // </React.Fragment>
+    </React.Fragment>
   );
 };
 export default DrawerComp;
