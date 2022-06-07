@@ -247,19 +247,19 @@ export const SignUppp = () => {
               </Grid>
 
               <Grid ml={1}>
-                {" "}
-                <FormControl error>
+                <FormControl error={true}>
                   <FormControlLabel
                     control={
                       <Checkbox
-                        error={true}
                         checked={acceptTnC}
                         onChange={handleChange}
                         size="small"
                       />
                     }
-                    label="Accept terms and conditions"
                   />
+                  <FormLabel size="small" error={err === 5 && true}>
+                    Accept terms and conditions
+                  </FormLabel>
                 </FormControl>
               </Grid>
 

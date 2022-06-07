@@ -43,6 +43,7 @@ function LinkTab(props) {
 }
 
 export const Header = () => {
+
   const { userprofile, setUserProfile } = useContext(UserContext);
 
   // "value" for navbar button selection
@@ -105,13 +106,22 @@ export const Header = () => {
                 variant="outlined"
                 aria-label="outlined primary button group"
               >
-                <Button style={{ color: "#ffffff", borderColor: "#ffffff80" }}>
+                <Button
+                 component={Link} to="/signup"
+                  style={{ color: "#ffffff", borderColor: "#ffffff80" }}
+                >
                   Sign Up
                 </Button>
-                <Button style={{ color: "#ffffff", borderColor: "#ffffff80" }}>
+                <Button
+                 component={Link} to="/signin"
+                 style={{ color: "#ffffff", borderColor: "#ffffff80" }}
+                >
                   Sign In
                 </Button>
-                <Button style={{ color: "#ffffff", borderColor: "#ffffff80" }}>
+                <Button
+                 component={Link} to="/signout"
+                 style={{ color: "#ffffff", borderColor: "#ffffff80" }}
+                >
                   Sign Out
                 </Button>
               </ButtonGroup>

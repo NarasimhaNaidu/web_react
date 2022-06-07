@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useTheme, useMediaQuery } from "@mui/material";
-
+// import {Chat} from './components/socket'
 import { Naidu } from "./components/localstorage";
 import { SignUp } from "./components/sample";
 import { SignUppp } from "./components/NewForm";
@@ -22,10 +22,11 @@ import {
 import { Header } from "./components/Header";
 import { BodyData } from "./components/Body";
 import {
-  initialState,
-  reducer,
-  SnackbarContext,
   UserContext,
+  reducer,
+  DINEIN,
+  initialState,
+  SnackbarContext,
 } from "./components/usercontext";
 import { UploadPP } from "./components/UploadImage";
 import { Signout } from "./components/signout";
@@ -59,8 +60,16 @@ const theme = createTheme({
 });
 
 function App() {
-  const [userprofile, setUserProfile] = useState(null);
+  console.log(1);
 
+  const [userprofile, setUserProfile] = useState(null);
+  // const [state, setState] = useReducer(reducer, initialState);
+
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+  console.log(state);
+  // const setRed = (e) => {
+  //   console.log(dispatch({ type: DINEIN, payload: e.target.value }));
+  // };
   const [snack, setSnack] = useState({
     message: "",
     color: "",
@@ -77,8 +86,6 @@ function App() {
 
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-
-  const [state, setState] = useReducer(reducer, initialState);
 
   return (
     <ThemeProvider theme={theme}>
@@ -124,8 +131,10 @@ function App() {
             <SnackbarContext.Provider value={{ snack, setSnack }}>
               <Router>
                 {/* Nav bar start */}
-                {/* {console.log(userprofile)} */}
+                {console.log(userprofile)}
                 <Header />
+                {/* <input onChange={(e) => setRed(e)} /> */}
+
                 {/* Nav bar end */}
                 <Routes>
                   <Route path="/" element={<BodyData />} />
@@ -141,6 +150,8 @@ function App() {
                   <Route path="/cards" element={<CardProfile />} />
                   <Route path="/signout" element={<Signout />} />
                   <Route path="/signuppp" element={<SignUppp />} />
+                  {/* <Route path="/chat" element={<Chat/>} /> */}
+
                 </Routes>
               </Router>
             </SnackbarContext.Provider>
@@ -149,7 +160,7 @@ function App() {
         {/* footer start  */}
         {/* {console.log(userprofile)} */}
         {/* <React.Fragment> */}
-          {isMatch ? <SimpleAccordion /> : <Footer />}
+        {isMatch ? <SimpleAccordion /> : <Footer />}
         {/* </React.Fragment> */}
         {/* footer end  */}
       </div>

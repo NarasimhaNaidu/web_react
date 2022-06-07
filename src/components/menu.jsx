@@ -14,8 +14,11 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export function AccountMenu() {
+  let history = useNavigate();
+
   const { userprofile, setUserProfile } = useContext(UserContext);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -26,6 +29,11 @@ export function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const validateForm = (e) => {
+    return <h1>{e}</h1>;
+  };
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -80,32 +88,33 @@ export function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem
-          onClick={() => {
-            alert("Please Enter Name");
-          }}
+          //  onClick={() => alert("Profile")}
+          disabled
         >
           <Avatar />
           Profile
         </MenuItem>
-        <MenuItem>
-          <Link href="/" underline="none">
-            <Avatar /> My account
-          </Link>
+
+        <MenuItem
+          // onClick={() => alert("My Account")}
+          disabled
+        >
+          <Avatar /> My account
         </MenuItem>
         <Divider />
-        <MenuItem>
+        <MenuItem onClick={() => history("/signup")}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={() => alert("Settings")} disabled>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={() => history("/signout")}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
